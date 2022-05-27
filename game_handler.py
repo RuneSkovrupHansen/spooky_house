@@ -1,10 +1,14 @@
+import random
+
+import pygame
+
 from card_generator import CardGenerator
 from floor_type import FloorType
 from map import Map
 from map import print_map
 from condition_context import ConditionContext
+from input import InputHandler
 
-import random
 
 class GameHandler:
 
@@ -24,6 +28,20 @@ class GameHandler:
         self.existing_cards = []
         self.current_position = start_position
         self.game_context = ConditionContext()
+
+        pygame_keys = []
+        for key in self.movement_keys.keys():
+            pygame_keys.append(ord(key))
+
+        self._movement_input_handler = InputHandler(pygame_keys)
+        # Pygame
+
+        pygame.init()
+
+        # Display is required to get input 
+        pygame.display.set_mode((100, 100))
+        pygame.display.update()
+
     
     def _get_user_input(self) -> str:
         inp = ""
@@ -58,7 +76,7 @@ class GameHandler:
     def _advance(self) -> None:
 
         while True:
-            user_input = self._get_user_input()
+            user_input = chr(self._movement_input_handler.get_input())
             if self._check_position_in_bounds(user_input=user_input):  # check input is in bounds of map
                 break
 
