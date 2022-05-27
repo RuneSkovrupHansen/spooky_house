@@ -38,11 +38,30 @@ class GameHandler:
             self.current_position[0] + self.movement_keys.get(move)[0],
             self.current_position[1] + self.movement_keys.get(move)[1]
         )
+
         self.current_position = new_pos
+        print(self.current_position)  # y must not be < 0 or > map.width
+
+    def _check_position_in_bounds(self, user_input):
+        validity = True
+        if self.current_position[1] == 0 and user_input == "a":
+            validity = False
+        elif self.current_position[1] == self.map.get_width() - 1 and user_input == "d":
+            validity = False
+        elif self.current_position[0] == 0 and user_input == "w":
+            validity = False
+        elif self.current_position[0] == self.map.get_height() - 1 and user_input == "s":
+            validity = False
+
+        return validity
     
     def _advance(self) -> None:
 
-        user_input = self._get_user_input()
+        while True:
+            user_input = self._get_user_input()
+            if self._check_position_in_bounds(user_input=user_input):  # check input is in bounds of map
+                break
+
         self._update_position(user_input)
 
         card = self.map.get_element(*self.current_position)
