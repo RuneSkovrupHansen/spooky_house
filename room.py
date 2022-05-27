@@ -1,4 +1,7 @@
+import random
+
 import card
+from events import get_all_local_events
 
 class Room(card.Card):
 
@@ -15,6 +18,8 @@ class Room(card.Card):
 
         self.prob_item = prob_item
         self.prob_event = prob_event
+
+        self.event_local = None
 
         self.connections = []
 
@@ -46,5 +51,12 @@ class Room(card.Card):
         return self.get_info_string()
 
     # Override
-    def on_card_draw(self):
-        self.print_info()
+    def on_room_generated(self):
+        print(self)
+        trigger_event = random.random() > self.prob_event
+        trigger_item = random.random() > self.prob_item
+
+        if trigger_event:
+            possible_events = get_all_local_events()
+            self.event_local = possible_events[random.randint(0, len(possible_events))]()  # get a random event
+            print(self.event_local)

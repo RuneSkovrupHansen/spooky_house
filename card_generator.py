@@ -24,5 +24,7 @@ class CardGenerator:
                 
                 if all_conditions_ok:
                     break
-        
+
+        generated_card.on_room_generated()
+
         return generated_card

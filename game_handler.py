@@ -75,7 +75,7 @@ class GameHandler:
             self.map.insert_element(card, *self.current_position)
 
         print_map(self.map, self.current_position)
-        print(card)
+        #print(card)
 
     def _game_loop(self):
 
@@ -87,10 +87,8 @@ class GameHandler:
         card = self.card_generator.generate_card(self.game_context)
         self.existing_cards.append(card)
         self.map.insert_element(card, *self.current_position)
-        
 
         print_map(self.map, self.current_position)
-        print(card)
 
         while True:
             self._advance()
