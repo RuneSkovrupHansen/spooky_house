@@ -5,40 +5,51 @@ from conditions import *
 
 def get_all_rooms() -> list:
     room_list = [
-            Hallway,
-            Kitchen,
-            Pantry,
-            Bedroom,
-            WineCellar,
-            GameRoom,
-            Foyer,
-            PortalRoom,
-            Office,
-            DiningRoom,
-            PrayerRoom,
-            GreenRoom,
-            RedRoom,
-            Library,
-            Bathroom,
-            CellRoom,
-            ServantsQuarters,
-            MirrorRoom,
-            ColdRoom,
-            TeaRoom,
-            GalleryRoom,
-            Laboratory,
-            Armory,
-            BoilerRoom,
-            Nursery,
-            MusicRoom,
-            AstralObservatory,
-            Larder,
-            StorageRoom,
-            BellTower,
-            Tower,
-            Furnace,
-            TaxidermyRoom,
-            Lounge
+        Hallway,
+        Kitchen,
+        Pantry,
+        Bedroom,
+        WineCellar,
+        GameRoom,
+        Foyer,
+        PortalRoom,
+        Office,
+        DiningRoom,
+        PrayerRoom,
+        GreenRoom,
+        RedRoom,
+        Library,
+        Bathroom,
+        CellRoom,
+        ServantsQuarters,
+        MirrorRoom,
+        ColdRoom,
+        TeaRoom,
+        GalleryRoom,
+        Laboratory,
+        Armory,
+        BoilerRoom,
+        Nursery,
+        MusicRoom,
+        AstralObservatory,
+        Larder,
+        StorageRoom,
+        BellTower,
+        Tower,
+        Furnace,
+        TaxidermyRoom,
+        Lounge,
+        UtilityRoom,
+        HobbyRoom,
+        LivingRoom,
+        HomeTheater,
+        AlterRoom,
+        DollRoom,
+        AlterRoom,
+        WitchesDen,
+        RottenRoom,
+        GuestRoom,
+        ControlRoom
         ]
     return room_list
 
@@ -50,9 +61,7 @@ class Hallway(Room):
             description="", 
             conditions=[], 
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class Kitchen(Room):
     def __init__(self) -> None:
@@ -61,9 +70,7 @@ class Kitchen(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1,
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class Pantry(Room):
     def __init__(self) -> None:
@@ -72,9 +79,7 @@ class Pantry(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class Bedroom(Room):
     def __init__(self) -> None:
@@ -83,9 +88,7 @@ class Bedroom(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class WineCellar(Room):
     def __init__(self) -> None:
@@ -94,9 +97,7 @@ class WineCellar(Room):
             description="", 
             conditions=[ConditionValidFloor(valid_floors=[FloorType.BASEMENT])],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class GameRoom(Room):
     def __init__(self) -> None:
@@ -105,9 +106,7 @@ class GameRoom(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class Foyer(Room):
     def __init__(self) -> None:
@@ -120,9 +119,7 @@ class Foyer(Room):
                 ConditionOnMapEdge()
                 ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class PortalRoom(Room):
     def __init__(self) -> None:
@@ -133,8 +130,7 @@ class PortalRoom(Room):
                 ConditionMaxAppearances(max_appearances=1)
                 ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1,
             prob_event=0.5)
 
 class Office(Room):
@@ -147,8 +143,7 @@ class Office(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.2)
 
 class DiningRoom(Room):
     def __init__(self) -> None:
@@ -159,9 +154,7 @@ class DiningRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
                 ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class PrayerRoom(Room):
     def __init__(self) -> None:
@@ -170,9 +163,8 @@ class PrayerRoom(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.33)
 
 class GreenRoom(Room):
     def __init__(self) -> None:
@@ -184,7 +176,7 @@ class GreenRoom(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
+            prob_item=0.33,
             prob_event=0.5)
 
 class RedRoom(Room):
@@ -196,9 +188,8 @@ class RedRoom(Room):
                 ConditionMaxAppearances(max_appearances=1)
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.75)
 
 class Library(Room):
     def __init__(self) -> None:
@@ -210,8 +201,7 @@ class Library(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.15)
 
 class Bathroom(Room):
     def __init__(self) -> None:
@@ -220,9 +210,7 @@ class Bathroom(Room):
             description="", 
             conditions=[],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class CellRoom(Room):
     def __init__(self) -> None:
@@ -234,9 +222,8 @@ class CellRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.4)
 
 class ServantsQuarters(Room):
     def __init__(self) -> None:
@@ -249,8 +236,7 @@ class ServantsQuarters(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.2)
 
 class ColdRoom(Room):
     def __init__(self) -> None:
@@ -262,9 +248,8 @@ class ColdRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.4)
 
 class MirrorRoom(Room):
     def __init__(self) -> None:
@@ -275,8 +260,7 @@ class MirrorRoom(Room):
                 ConditionMaxAppearances(max_appearances=1)
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1,
             prob_event=0.5)
 
 class StairsAscending(Room):
@@ -289,9 +273,9 @@ class StairsAscending(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT, FloorType.GROUND])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_item=0.0,
+            prob_event=0.0)
 
 class StairsDescending(Room):
     def __init__(self) -> None:
@@ -303,9 +287,9 @@ class StairsDescending(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_item=0.0,
+            prob_event=0.0)
 
 class TeaRoom(Room):
     def __init__(self) -> None:
@@ -317,9 +301,7 @@ class TeaRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class GalleryRoom(Room):
     def __init__(self) -> None:
@@ -331,9 +313,7 @@ class GalleryRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class Laboratory(Room):
     def __init__(self) -> None:
@@ -346,8 +326,8 @@ class Laboratory(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.2,
+            prob_event=0.4)
 
 class Armory(Room):
     def __init__(self) -> None:
@@ -360,8 +340,7 @@ class Armory(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=1.0)
 
 class BoilerRoom(Room):
     def __init__(self) -> None:
@@ -373,9 +352,8 @@ class BoilerRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.75)
 
 class Nursery(Room):
     def __init__(self) -> None:
@@ -387,8 +365,7 @@ class Nursery(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1,
             prob_event=0.5)
 
 class MusicRoom(Room):
@@ -401,8 +378,7 @@ class MusicRoom(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1,
             prob_event=0.5)
 
 class AstralObservatory(Room):
@@ -416,8 +392,8 @@ class AstralObservatory(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.25,
+            prob_event=0.75)
 
 class Larder(Room):
     def __init__(self) -> None:
@@ -429,9 +405,7 @@ class Larder(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1)
 
 class StorageRoom(Room):
     def __init__(self) -> None:
@@ -444,8 +418,7 @@ class StorageRoom(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            prob_item=0.33)
 
 class BellTower(Room):
     def __init__(self) -> None:
@@ -457,8 +430,7 @@ class BellTower(Room):
                 ConditionValidFloor(valid_floors=[FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1,
             prob_event=0.5)
 
 class Tower(Room):
@@ -471,9 +443,8 @@ class Tower(Room):
                 ConditionValidFloor(valid_floors=[FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.33)
 
 class Furnace(Room):
     def __init__(self) -> None:
@@ -485,9 +456,8 @@ class Furnace(Room):
                 ConditionValidFloor(valid_floors=[FloorType.BASEMENT])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
-            prob_event=0.5)
+            evilness=1,
+            prob_event=0.75)
 
 class Botanica(Room):
     def __init__(self) -> None:
@@ -501,7 +471,7 @@ class Botanica(Room):
             ],
             lighting=1, 
             evilness=1, 
-            prob_item=0.1, 
+            prob_item=0.2,
             prob_event=0.5)
 
 class TaxidermyRoom(Room):
@@ -528,6 +498,113 @@ class Lounge(Room):
                 ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER])
             ],
             lighting=1, 
-            evilness=1, 
-            prob_item=0.1, 
+            evilness=1)
+
+class UtilityRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Utility Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.BASEMENT, FloorType.GROUND]),
+                        ConditionMaxAppearances(max_appearances=2)],
+            lighting=1,
+            evilness=1,
+            prob_item=0.33)
+
+class HobbyRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Hobby Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.BASEMENT, FloorType.GROUND]),
+                        ConditionMaxAppearances(max_appearances=2)],
+            lighting=1,
+            evilness=1,
+            prob_item=0.2)
+
+class LivingRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Living Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER]),
+                        ConditionMaxAppearances(max_appearances=2)],
+            lighting=1,
+            evilness=1)
+
+class HomeTheater(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Home Theater",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER]),
+                        ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1)
+
+class AlterRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Alter Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.BASEMENT]),
+                        ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1,
             prob_event=0.5)
+
+class DollRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="The Doll Room",
+            description="",
+            conditions=[ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1,
+            prob_event=0.75)
+
+class WitchesDen(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Witch's Den",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.BASEMENT, FloorType.UPPER]),
+                        ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1,
+            prob_item=0.33,
+            prob_event=0.75)
+
+class RottenRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="The Rotten Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.BASEMENT]),
+                        ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1,
+            prob_event=0.5)
+
+class GuestRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="Guest Room",
+            description="",
+            conditions=[ConditionValidFloor(valid_floors=[FloorType.GROUND, FloorType.UPPER]),
+                        ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1)
+
+class ControlRoom(Room):
+    def __init__(self) -> None:
+        super().__init__(
+            name="The Control Room",
+            description="",
+            conditions=[ConditionMaxAppearances(max_appearances=1)],
+            lighting=1,
+            evilness=1,
+            prob_item=0.25)
+
+# Ideas :
+# Garage, Walk-in closet, fitness room, in-door swimming pool, sauna, walk-in freezer witch's den

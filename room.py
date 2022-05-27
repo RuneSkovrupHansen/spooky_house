@@ -2,7 +2,7 @@ import card
 
 class Room(card.Card):
 
-    def __init__(self, name, description, conditions, lighting, evilness, prob_item, prob_event) -> None:
+    def __init__(self, name, description, conditions, lighting, evilness, prob_item=0.1, prob_event=0.25) -> None:
 
         self.name = name
         self.description = description
